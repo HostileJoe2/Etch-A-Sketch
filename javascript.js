@@ -1,5 +1,6 @@
 const container = document.querySelector("#container");
 const button = document.querySelector("#resize");
+const clear = document.querySelector("#clear");
 
 function randomColor() {
    const r = Math.floor(Math.random() * 256);
@@ -39,8 +40,15 @@ function buildGrid (size) {
 buildGrid(16)
 
 button.addEventListener("click", () => {
-   let axisLength = prompt("How Many boxes do you want?")
+   let axisLength = prompt("Choose between 1 and 100, with one being lowest and 100 being the highest reolution.")
    console.log(axisLength);
    container.replaceChildren();
    buildGrid(axisLength);
 });
+
+clear.addEventListener("click", () => {
+   const allBoxes = document.querySelectorAll(".boxes");
+   allBoxes.forEach(box => {
+      box.style.backgroundColor = "";
+   })
+})
